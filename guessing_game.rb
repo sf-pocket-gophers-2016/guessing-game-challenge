@@ -21,10 +21,9 @@ class GuessingGame
 
   def guess(num)
     if num < @secret_number
-      p "Too low!"
+      deduct_guesses(num)
+      return "Too low!"
     end
-
-    deduct_guesses(num)
   end
 
   def deduct_guesses(num)
