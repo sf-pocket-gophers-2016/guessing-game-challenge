@@ -53,9 +53,9 @@ class GuessingGame
           @num_of_guesses -= 1
           @guess_array << number
           return "Too high!"
-        else
-          @congrats_message
       end
+    else
+      @congrats_message
     end
   end
 end
