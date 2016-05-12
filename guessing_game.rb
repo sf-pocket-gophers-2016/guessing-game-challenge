@@ -57,6 +57,9 @@ class GuessingGame
           return "Too high!"
       end
 
+    elsif @num_of_guesses == 0
+      return "You lost! The number was #{number}"
+
     end
   end
 end
