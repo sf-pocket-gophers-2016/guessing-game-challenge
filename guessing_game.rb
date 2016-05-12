@@ -1,7 +1,6 @@
 class GuessingGame
 
-  attr_accessor :congrats_message, :remaining_guesses
-  attr_accessor :has_won, :has_lost
+  attr_accessor :congrats_message, :remaining_guesses, :has_won, :has_lost
 
   def initialize(secret_number, num_guesses)
     @congrats_message = "Yay, you won!"
@@ -23,9 +22,12 @@ class GuessingGame
     if num < @secret_number
       deduct_guesses(num)
       warning("Too low!")
-    else num > @secret_number
+    elsif num > @secret_number
       deduct_guesses(num)
       warning("Too high!")
+    else num == @secret_number
+      @won = true
+      return win
     end
   end
 
@@ -41,14 +43,15 @@ class GuessingGame
   end
 
   def warning(mesg)
-    # p mesg
-
     if @remaining_guesses == 1
       p mesg + " WARNING: Only one guess left!"
     else
       return mesg
     end
+  end
 
+  def win
+   @congrats_message + " The number was #{@secret_number}"
   end
 
 
