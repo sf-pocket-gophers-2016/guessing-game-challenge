@@ -31,6 +31,7 @@ class GuessingGame
       return "You already lost. The number was #{secret_num}"
     elsif num == @secret_num
       @has_won = true
+      @list_of_guesses << num
       return @congrats_message + " The number was #{secret_num}"
     elsif @list_of_guesses.include?(num)
       if num < @secret_num
