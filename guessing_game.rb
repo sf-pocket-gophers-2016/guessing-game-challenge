@@ -1,14 +1,15 @@
 class GuessingGame
 
-attr_accessor :congrats_message, :remaining_guesses
-attr_accessor :has_won, :has_lost
+  attr_accessor :congrats_message, :remaining_guesses
+  attr_accessor :has_won, :has_lost
 
-	def initialize(secret_number, num_guesses)
-		@secret_number = secret_number
-		@num_guesses = num_guesses
-		@congrats_message = congrats_message
-		@remaining_guesses = remaining_guesses
-	end
+  def initialize(secret_number, num_guesses)
+    @congrats_message = "Yay, you won!"
+    @secret_number = secret_number
+    @remaining_guesses = num_guesses
+    @guessed_numbers = []
+    # @remaining_guesses = 0
+  end
 
   def has_won?
     @won = false
@@ -16,6 +17,25 @@ attr_accessor :has_won, :has_lost
 
   def has_lost?
     @lost = false
+  end
+
+  def guess(num)
+    if num < @secret_number
+      p "Too low!"
+    end
+
+    deduct_guesses(num)
+  end
+
+  def deduct_guesses(num)
+    # p @remaining_guesses
+    if @guessed_numbers.include?(num)
+      # do nothing
+      @remaining_guesses
+    else
+      @remaining_guesses = @remaining_guesses - 1
+      @guessed_numbers << num
+    end
   end
 
 
