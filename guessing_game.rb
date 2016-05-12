@@ -6,6 +6,7 @@ class GuessingGame
     @congrats_message = "Yay, you won!"
     @has_won = false
     @has_lost = false
+    @list_of_guesses = []
   end
 
   def congrats_message
@@ -27,4 +28,27 @@ class GuessingGame
   def has_lost?
     @has_lost
   end
+
+  def guess(num)
+    if @list_of_guesses.include?(num)
+      if num < @secret_num
+        return "Too low!"
+      elsif num > @secret_num
+        return "Too high!"
+      end
+    elsif  !@list_of_guesses.include?(num)
+      if num < @secret_num
+        @num_of_guesses -= 1
+        @list_of_guesses << num
+        return "Too low!"
+      elsif num > @secret_num
+        @num_of_guesses -= 1
+        @list_of_guesses << num
+        return "Too high!"
+      end
+    end
+  end
+
+
+
 end
