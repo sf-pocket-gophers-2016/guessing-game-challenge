@@ -1,3 +1,5 @@
+require 'pry-byebug'
+
 class GuessingGame
 
   attr_accessor :congrats_message, :remaining_guesses, :has_won, :has_lost
@@ -15,10 +17,17 @@ class GuessingGame
   end
 
   def has_lost?
-    @lost = false
+    @won = false
   end
 
   def guess(num)
+    # if has_won?
+    #   # binding.pry
+    #   return "You lost! The number was #{@secret_number}"
+    # else
+    #   return "You lost! The number was #{@secret_number}"
+    # end
+
     if num < @secret_number
       deduct_guesses(num)
       warning("Too low!")
@@ -37,14 +46,25 @@ class GuessingGame
       # do nothing
       @remaining_guesses
     else
-      @remaining_guesses = @remaining_guesses - 1
+      @remaining_guesses = @remaining_guesses -1
       @guessed_numbers << num
+    end
+  end
+
+  def zero_guesses
+    if @remaining_guesses == 0
+      return lose
+    else
+      @remaining_guesses
     end
   end
 
   def warning(mesg)
     if @remaining_guesses == 1
       p mesg + " WARNING: Only one guess left!"
+    elsif
+      @remaining_guesses == 0
+      return lose
     else
       return mesg
     end
@@ -52,6 +72,10 @@ class GuessingGame
 
   def win
    @congrats_message + " The number was #{@secret_number}"
+  end
+
+  def lose
+    return "You lost! The number was #{@secret_number}"
   end
 
 
