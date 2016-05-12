@@ -23,8 +23,8 @@ p (game.has_won? == false)
 p (game.has_lost? == false)
 
 puts "Wrong guess receives correct feedback"
+# binding.pry
 p (game.guess(2) == "Too low!")
-
 puts "Wrong guess deducts from remaining guesses"
 p (game.remaining_guesses == 4)
 
@@ -56,10 +56,11 @@ p (winning_game.guess(100) == "Yay, you won! The number was 100")
 
 puts "Losing games get a loss message"
 p (losing_game.guess(9) == "You lost! The number was 999")
-# binding.pry
+
 p (copied_game.guess(123) == "You lost! The number was 8")
 
 puts "Guesses on completed games show the status of the game"
+# binding.pry
 p (game.guess(8) == "You already won. The number was 8")
 p (game.guess(9) == "You already won. The number was 8")
 p (winning_game.guess(0) == "You already won. The number was 100")
