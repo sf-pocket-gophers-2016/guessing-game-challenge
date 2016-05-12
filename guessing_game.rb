@@ -22,7 +22,10 @@ class GuessingGame
   def guess(num)
     if num < @secret_number
       deduct_guesses(num)
-      return "Too low!"
+      warning("Too low!")
+    else num > @secret_number
+      deduct_guesses(num)
+      warning("Too high!")
     end
   end
 
@@ -35,6 +38,17 @@ class GuessingGame
       @remaining_guesses = @remaining_guesses - 1
       @guessed_numbers << num
     end
+  end
+
+  def warning(mesg)
+    # p mesg
+
+    if @remaining_guesses == 1
+      p mesg + " WARNING: Only one guess left!"
+    else
+      return mesg
+    end
+
   end
 
 
