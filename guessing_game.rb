@@ -24,8 +24,10 @@ class GuessingGame
   end
 
   def guess(number)
+    if number == @secret_number
+      return "#{@congrats_message}" + " The number was #{number}"
 
-    if @guess_array.include?(number)
+    elsif @guess_array.include?(number)
       if @num_of_guesses == 1 && number < @secret_number
         return "Too low! WARNING: Only one guess left!"
       elsif @num_of_guesses == 1 && number > @secret_number
@@ -54,8 +56,7 @@ class GuessingGame
           @guess_array << number
           return "Too high!"
       end
-    else
-      @congrats_message
+
     end
   end
 end
