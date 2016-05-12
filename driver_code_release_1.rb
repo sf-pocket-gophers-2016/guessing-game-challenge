@@ -29,7 +29,6 @@ p (game.remaining_guesses == 4)
 puts "Repeated guesses do not cost the user anything"
 p (game.guess(2) == "Too low!")
 p (game.remaining_guesses == 4)
-p game.remaining_guesses
 
 puts "Wrong guess receives feedback"
 p (game.guess(11) == "Too high!")

@@ -8,6 +8,7 @@ class GuessingGame
     @congrats_message = "Yay, you won!"
     @has_lost = false
     @has_won = false
+    @guess_array = []
   end
 
   def remaining_guesses
@@ -24,18 +25,26 @@ class GuessingGame
 
   def guess(number)
 
-    # if @guess_array.include?(number)
-    #   p "You've repeated a guess... Try again."
-    # else
+    if @guess_array.include?(number)
       if number < @secret_number
-        @num_of_guesses = @num_of_guesses -1
-        "Too low!"
-      elsif number > @secret_number
-        @num_of_guesses -= 1
-        "Too high!"
-      else
-        @congrats_message
+        return "Too low!"
+      else number > @secret_number
+        return "Too high!"
+        # p "You've repeated a guess... Try again."
       end
-    # end
+
+    elsif !@guess_array.include?(number)
+      if number < @secret_number
+          @num_of_guesses = @num_of_guesses -1
+        @guess_array << number
+        return "Too low!"
+      elsif number > @secret_number
+          @num_of_guesses -= 1
+          @guess_array << number
+          return "Too high!"
+        else
+          @congrats_message
+      end
+    end
   end
 end
