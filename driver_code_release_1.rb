@@ -68,6 +68,7 @@ p (losing_game.guess(999) == "You already lost. The number was 999")
 p (losing_game.guess(111) == "You already lost. The number was 999")
 
 puts "Guesses on completed games do not alter remaining_guesses"
+# binding.pry
 p (game.remaining_guesses == 0)
 p (winning_game.remaining_guesses == 1)
 p (losing_game.remaining_guesses == 0)

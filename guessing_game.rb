@@ -32,6 +32,7 @@ class GuessingGame
       deduct_guesses(num)
       warning("Too high!")
     else num == @secret_number
+      deduct_guesses(num)
       @won = true
       return win
     end
