@@ -48,20 +48,20 @@ class GuessingGame
 
     elsif !@guess_array.include?(number)
       if @num_of_guesses == 1
-        @num_of_guesses = @num_of_guesses -1
+        @num_of_guesses -=1
         @guess_array << number
         @has_lost = true
         return "You lost! The number was #{@secret_number}"
       elsif @num_of_guesses == 2 && number < @secret_number
-        @num_of_guesses = @num_of_guesses -1
+        @num_of_guesses -=1
         @guess_array << number
         return "Too low! WARNING: Only one guess left!"
       elsif @num_of_guesses == 2 && number > @secret_number
-        @num_of_guesses = @num_of_guesses -1
+        @num_of_guesses -=1
         @guess_array << number
         return "Too high! WARNING: Only one guess left!"
       elsif number < @secret_number
-          @num_of_guesses = @num_of_guesses -1
+          @num_of_guesses -=1
         @guess_array << number
         return "Too low!"
       elsif number > @secret_number
