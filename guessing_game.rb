@@ -41,7 +41,7 @@ class GuessingGame
         return "Too high! WARNING: Only one guess left!"
       end
     elsif @already_guessed.index(int) != nil
-      @remaining_guesses
+      #@remaining_guesses
       if @remaining_guesses == 1
         return "Too high! WARNING: Only one guess left!"
       end
