@@ -38,6 +38,7 @@ p (game.remaining_guesses == 3)
 
 p (game.guess(10) == "Too high!")
 p (game.remaining_guesses == 2)
+puts "#============================================================================"
 
 puts "Warning is given when there's only one guess remaining"
 p (game.guess(9) == "Too high! WARNING: Only one guess left!")
