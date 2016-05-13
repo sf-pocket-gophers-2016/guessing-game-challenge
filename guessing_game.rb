@@ -32,6 +32,7 @@ class GuessingGame
     elsif number == @secret_number
       @has_won = true
       @guess_array << number
+      @num_of_guesses -= 1
       return "#{@congrats_message}" + " The number was #{number}"
 
     elsif @guess_array.include?(number)
