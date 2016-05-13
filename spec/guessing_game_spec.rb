@@ -3,22 +3,28 @@
 require_relative '../guessing_game'
 
 describe 'guessing_game' do
-    let(:game){GuessingGame.new(8, 5)} # game 1
-    let(:losing_game) {GuessingGame.new(999, 1)} # game 2
-    let(:winning_game) {GuessingGame.new(100, 2)} # game 3
+  let(:game){GuessingGame.new(8, 5)} # game 1
+  let(:losing_game) {GuessingGame.new(999, 1)} # game 2
+  let(:winning_game) {GuessingGame.new(100, 2)} # game 3
+
   describe 'initialize' do
-  it 'can initialize a guessing game with our desired secret number and the number of allowed guesses' do
-
+    it 'can initialize a guessing game with our desired secret number and the number of allowed guesses' do
     expect(game).to be_an_instance_of GuessingGame
+    end
   end
+
+  describe 'custom message' do
+    it 'can set a custom congrats message' do
+      expect(game.congrats_message).to eq ("Yay, you won!")
+    end
+
+    it 'can et a custom congrats message' do
+      game.congrats_message = "Correct!"
+      expect(game.congrats_message).to eq ("Correct!")
+    end
   end
 
 
-end
-    # puts "We can set a custom congrats message"
-    # p (game.congrats_message == "Yay, you won!")
-    # game.congrats_message = "Correct!"
-    # p (game.congrats_message == "Correct!")
 
     # puts "There will be 5 guesses remaining in game 1"
     # p (game.remaining_guesses == 5)
@@ -88,4 +94,5 @@ end
     # puts "Outcome is recorded correctly for lost game"
     # p (losing_game.has_won? == false)
     # p (losing_game.has_lost? == true)
+end
 
