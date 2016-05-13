@@ -25,23 +25,41 @@ class GuessingGame
 	end
 
 	def guess(num)
-		if @previous_guesses.include?(num)
-			if num < @secret_num
-				return "Too low!"
-			elsif num > @secret_num
-				return "Too high!"
-			end
-		else 
-			if num < @secret_num
-				@guess_num -= 1
-				@previous_guesses << num
-				return "Too low!"
-			elsif num > @secret_num
-				@guess_num -= 1
-				@previous_guesses << num
-				return "Too high!"
-			end
+
+		return "You already won. The number was #{@secret_num}" if @has_won
+
+		return "You already lost. The number was #{@secret_num}" if @has_lost		
+
+		if num == @secret_num
+			@guess_num -= 1
+			@has_won = true
+			return @congrats_message + " The number was #{@secret_num}"  
 		end
+
+		if @guess_num == 1 && num != @guess_num && !@previous_guesses.include?(num)
+			@guess_num -= 1
+			@has_lost = true
+			return "You lost! The number was #{@secret_num}"
+		end
+
+		feedback = ""
+
+		if num < @secret_num
+			feedback += "Too low!"
+		elsif num > @secret_num
+			feedback += "Too high!"			 
+		end
+
+		if !@previous_guesses.include?(num)
+			@previous_guesses << num
+			@guess_num -= 1
+		end
+
+		if @guess_num == 1	
+			feedback += " WARNING: Only one guess left!"
+		end	
+		return feedback					
+
 	end
 
 end
