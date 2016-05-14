@@ -34,6 +34,7 @@ puts "Wrong guess receives feedback"
 p (game.guess(11) == "Too high!")
 
 puts "Wrong guess deducts from remaining guesses"
+p game.remaining_guesses
 p (game.remaining_guesses == 3)
 
 p (game.guess(10) == "Too high!")
