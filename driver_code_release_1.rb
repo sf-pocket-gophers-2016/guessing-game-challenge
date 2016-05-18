@@ -24,12 +24,13 @@ puts "Wrong guess receives correct feedback"
 p (game.guess(2) == "Too low!")
 
 puts "Wrong guess deducts from remaining guesses"
+# p game.remaining_guesses
 p (game.remaining_guesses == 4)
 
 puts "Repeated guesses do not cost the user anything"
 p (game.guess(2) == "Too low!")
 p (game.remaining_guesses == 4)
-
+p game.remaining_guesses
 puts "Wrong guess receives feedback"
 p (game.guess(11) == "Too high!")
 
@@ -75,3 +76,4 @@ p (game.has_lost? == false)
 puts "Outcome is recorded correctly for lost game"
 p (losing_game.has_won? == false)
 p (losing_game.has_lost? == true)
+
